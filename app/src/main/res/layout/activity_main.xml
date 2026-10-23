@@ -10,23 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="大肥鱼笔记"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp">
 
         <TextView
             android:id="@+id/tvPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:textSize="11sp"
-            android:alpha="0.5"
+            android:alpha="0.45"
             android:singleLine="true"
             android:ellipsize="middle" />
 
@@ -34,11 +26,12 @@
             android:id="@+id/tvEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:gravity="center"
-            android:text="还没有笔记"
+            android:lineSpacingExtra="8dp"
+            android:text="还没有笔记\n点右下角的 + 新建一个"
             android:textSize="15sp"
-            android:alpha="0.6"
+            android:alpha="0.55"
             android:visibility="gone" />
 
         <ScrollView
@@ -51,9 +44,9 @@
                 android:id="@+id/tvList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="5dp"
                 android:textSize="15sp"
-                android:paddingBottom="120dp" />
+                android:paddingBottom="160dp" />
         </ScrollView>
     </LinearLayout>
 
@@ -63,9 +56,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="92dp"
         android:contentDescription="词频统计"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+        app:backgroundTint="#3D5A6C"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+        app:tint="@android:color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNew"
@@ -74,6 +69,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="新建笔记"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

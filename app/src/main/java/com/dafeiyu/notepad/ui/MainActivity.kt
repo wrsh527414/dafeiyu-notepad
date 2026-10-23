@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         // 用简单列表展示（不引 RecyclerView 也能跑，先保证稳定）
         val sb = StringBuilder()
         if (files.isEmpty()) {
-            sb.append("还没有笔记。点右下角 + 新建一个吧。")
+            sb.append("")
         } else {
             files.forEachIndexed { idx, f ->
                 val name = f.nameWithoutExtension
