@@ -4,7 +4,7 @@ import android.content.Context
 import java.io.File
 
 /**
- * 笔记仓库：管理 /sdcard/Documents/大肥鱼笔记/ 下的 TXT 与同名图片
+ * 笔记仓库：管理 /sdcard/Documents/OC辅助/ 下的 TXT 与同名图片
  *
  * 图片命名约定：笔记.txt 的配图存为 笔记_cover.png（或 .jpg）
  */
@@ -15,7 +15,7 @@ class NoteRepository(private val context: Context) {
             android.os.Environment.getExternalStoragePublicDirectory(
                 android.os.Environment.DIRECTORY_DOCUMENTS
             ),
-            "大肥鱼笔记"
+            "OC辅助"
         )
         if (!dir.exists()) dir.mkdirs()
         dir
