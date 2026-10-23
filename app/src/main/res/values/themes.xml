@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 用 Material3 但不带 NoActionBar，这样 supportActionBar 能正常工作 -->
+    <style name="Theme.NotepadApp" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSurface</item>
+    </style>
+</resources>

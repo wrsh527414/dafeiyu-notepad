@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <TextView
+        android:id="@+id/tvSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switchStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="含停用词" />
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≥2次"
+                android:checkable="false" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMin3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≥3次"
+                android:checkable="false" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMin5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≥5次"
+                android:checkable="false" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="没有达到阈值的词"
+        android:alpha="0.5"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvWords"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingVertical="8dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

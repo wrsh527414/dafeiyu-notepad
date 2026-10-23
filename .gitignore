@@ -1,0 +1,11 @@
+# 构建产物
+*.apk
+*.aab
+/app/build/
+/build/
+/local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
