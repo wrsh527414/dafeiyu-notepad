@@ -542,19 +542,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: VH, position: Int) {
-            val it = items[position]
-            holder.b.tvName.text = it.name
+            val note = items[position]
+            holder.b.tvName.text = note.name
             val sb = StringBuilder()
-            sb.append(it.size).append(" · ").append(it.chars).append(" 字")
-            sb.append(" · 编辑 ").append(it.edits).append(" 次")
-            sb.append(" · ").append(Formatters.date(it.created))
+            sb.append(note.size).append(" · ").append(note.chars).append(" 字")
+            sb.append(" · 编辑 ").append(note.edits).append(" 次")
+            sb.append(" · ").append(Formatters.date(note.created))
             holder.b.tvMeta.text = sb.toString()
-            holder.b.tvPreview.text = it.preview
+            holder.b.tvPreview.text = note.preview
 
-            if (it.hasImage) {
+            if (note.hasImage) {
                 holder.b.ivThumb.visibility = View.VISIBLE
                 holder.b.tvNoThumb.visibility = View.GONE
-                val bmp = repo?.loadThumbnail(it.name, 180)
+                val bmp = repo?.loadThumbnail(note.name, 180)
                 if (bmp != null) {
                     holder.b.ivThumb.setImageBitmap(bmp)
                 } else {
@@ -567,8 +567,8 @@ class MainActivity : AppCompatActivity() {
                 holder.b.tvNoThumb.visibility = View.VISIBLE
             }
 
-            holder.itemView.setOnClickListener { onClick(it.name) }
-            holder.itemView.setOnLongClickListener { onLongClick(it.name); true }
+            holder.itemView.setOnClickListener { onClick(note.name) }
+            holder.itemView.setOnLongClickListener { onLongClick(note.name); true }
         }
 
         override fun getItemCount() = items.size
