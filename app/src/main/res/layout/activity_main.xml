@@ -9,14 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="8dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
             android:textSize="11sp"
             android:alpha="0.45"
             android:singleLine="true"
@@ -26,7 +27,7 @@
             android:id="@+id/tvEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="64dp"
             android:gravity="center"
             android:lineSpacingExtra="8dp"
             android:text="还没有笔记\n点右下角的 + 新建一个"
@@ -34,21 +35,26 @@
             android:alpha="0.55"
             android:visibility="gone" />
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotes"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginTop="12dp">
-
-            <TextView
-                android:id="@+id/tvList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="5dp"
-                android:textSize="15sp"
-                android:paddingBottom="160dp" />
-        </ScrollView>
+            android:clipToPadding="false"
+            android:paddingBottom="170dp" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="160dp"
+        android:contentDescription="工具"
+        app:backgroundTint="#4A6B7C"
+        app:srcCompat="@android:drawable/ic_menu_manage"
+        app:tint="@android:color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabStats"
@@ -56,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="88dp"
         android:contentDescription="词频统计"
         app:backgroundTint="#3D5A6C"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size"

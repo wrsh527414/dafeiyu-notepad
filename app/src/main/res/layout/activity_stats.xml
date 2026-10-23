@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,6 +13,32 @@
         android:textSize="12sp"
         android:textStyle="bold" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp">
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchNoun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="只要名词"
+            android:textSize="12sp" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="含虚词"
+            android:textSize="12sp" />
+    </LinearLayout>
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,16 +49,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/switchStop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="含停用词" />
-
-            <Space
-                android:layout_width="16dp"
-                android:layout_height="1dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipMin2"
@@ -64,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="没有达到阈值的词"
+        android:text="没有达到阈值的词\n试试关掉「只要名词」或降低次数要求"
         android:alpha="0.5"
         android:visibility="gone" />
 

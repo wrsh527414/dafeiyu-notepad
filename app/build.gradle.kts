@@ -4,21 +4,34 @@ plugins {
 }
 
 android {
-    namespace = "com.dafeiyu.notepad"
+    namespace = "com.ocassist.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.dafeiyu.notepad"
+        applicationId = "com.ocassist.app"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("../keystore/release.jks")
+            storePassword = "ocassist2026"
+            keyAlias = "ocassist"
+            keyPassword = "ocassist2026"
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

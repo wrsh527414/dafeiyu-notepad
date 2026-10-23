@@ -15,6 +15,35 @@
         android:background="?attr/colorSurfaceVariant"
         android:text="" />
 
+    <!-- 配图预览条 -->
+    <LinearLayout
+        android:id="@+id/coverBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivCover"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="配图预览" />
+
+        <TextView
+            android:id="@+id/tvCoverHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="点击图片查看大图"
+            android:textSize="11sp"
+            android:alpha="0.5" />
+    </LinearLayout>
+
     <EditText
         android:id="@+id/etContent"
         android:layout_width="match_parent"
