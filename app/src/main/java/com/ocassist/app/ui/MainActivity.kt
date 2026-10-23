@@ -544,11 +544,11 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: VH, position: Int) {
             val it = items[position]
             holder.b.tvName.text = it.name
-            holder.b.tvMeta.text = buildString {
-                append(it.size).append(" · ").append(it.chars).append(" 字")
-                append(" · 编辑 ").append(it.edits).append(" 次")
-                append(" · ").append(Formatters.date(it.created))
-            }
+            val sb = StringBuilder()
+            sb.append(it.size).append(" · ").append(it.chars).append(" 字")
+            sb.append(" · 编辑 ").append(it.edits).append(" 次")
+            sb.append(" · ").append(Formatters.date(it.created))
+            holder.b.tvMeta.text = sb.toString()
             holder.b.tvPreview.text = it.preview
 
             if (it.hasImage) {

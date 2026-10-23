@@ -65,15 +65,15 @@ class EditorActivity : AppCompatActivity() {
         val text = b.etContent.text?.toString() ?: ""
         val st = WordCounter.stats(text)
         val m = meta.get(noteName)
-        b.tvInfo.text = buildString {
-            append("${st.charCount} 字")
-            append(" · ${st.lineCount} 行")
-            append(" · ${st.uniqueWords} 个词")
-            if (m != null) {
-                append(" · 编辑 ${m.editCount} 次")
-                append(" · 创建于 ${Formatters.date(m.createdAt)}")
-            }
+        val sb = StringBuilder()
+        sb.append("${st.charCount} 字")
+        sb.append(" · ${st.lineCount} 行")
+        sb.append(" · ${st.uniqueWords} 个词")
+        if (m != null) {
+            sb.append(" · 编辑 ${m.editCount} 次")
+            sb.append(" · 创建于 ${Formatters.date(m.createdAt)}")
         }
+        b.tvInfo.text = sb.toString()
         updateCover()
     }
 

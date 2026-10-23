@@ -71,13 +71,13 @@ class StatsActivity : AppCompatActivity() {
         }
 
         val st = WordCounter.stats(text, terms.all())
-        b.tvSummary.text = buildString {
-            append("共 ${st.charCount} 字")
-            append(" · 中文 ${st.cjkCount}")
-            append(" · 英文 ${st.wordCount} 词")
-            append(" · 去重 ${st.uniqueWords}")
-            append(" · 词库 ${terms.count()}")
-        }
+        val sb = StringBuilder()
+        sb.append("共 ${st.charCount} 字")
+        sb.append(" · 中文 ${st.cjkCount}")
+        sb.append(" · 英文 ${st.wordCount} 词")
+        sb.append(" · 去重 ${st.uniqueWords}")
+        sb.append(" · 词库 ${terms.count()}")
+        b.tvSummary.text = sb.toString()
 
         val words = WordCounter.count(
             text,
