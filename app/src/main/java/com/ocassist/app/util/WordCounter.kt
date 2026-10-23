@@ -98,13 +98,15 @@ object WordCounter {
      * @param includeStopWords 是否保留停用词
      * @param userTerms 用户自定义词库（优先级最高，会与内置词库合并）
      * @param nounsOnly 只保留名词（命中词库的词视为名词）
+     * @param termsOnly 白名单模式：只统计用户词库里的词
      */
     fun count(
         text: String,
         minCount: Int = 2,
         includeStopWords: Boolean = false,
         userTerms: List<String> = emptyList(),
-        nounsOnly: Boolean = false
+        nounsOnly: Boolean = false,
+        termsOnly: Boolean = false
     ): List<WordFreq> {
         // 合并词库：用户词库优先，长的在前
         val terms = (userTerms.filter { it.isNotBlank() } + BUILTIN_TERMS)
@@ -162,13 +164,19 @@ object WordCounter {
         }
 
         // ── 3. 过滤 + 排序 ──
+        val userSet = userTerms.map { it.trim() }.filter { it.isNotEmpty() }.toSet()
+
         return freq.entries
             .asSequence()
             .filter { it.value >= minCount }
             .filter { e ->
-                if (!nounsOnly) true
-                else isTermMap[e.key] == true || e.key.matches(Regex("[A-Za-z]+"))
-                // 「只要名词」模式下：词库命中的 + 英文单词（英文不做词性判断，全保留）
+                when {
+                    // 白名单模式：只留用户词库里的词（用户词库为空时不启用，否则啥都不剩）
+                    termsOnly && userSet.isNotEmpty() -> userSet.contains(e.key)
+                    nounsOnly -> isTermMap[e.key] == true ||
+                            e.key.matches(Regex("[A-Za-z]+"))
+                    else -> true
+                }
             }
             .sortedWith(
                 compareByDescending<Map.Entry<String, Int>> { it.value }

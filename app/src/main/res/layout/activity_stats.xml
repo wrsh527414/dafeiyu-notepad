@@ -28,7 +28,7 @@
             android:textSize="12sp" />
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="8dp"
             android:layout_height="1dp" />
 
         <com.google.android.material.materialswitch.MaterialSwitch
@@ -37,6 +37,37 @@
             android:layout_height="wrap_content"
             android:text="含虚词"
             android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="4dp">
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchTermsOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="只统计词库"
+            android:textSize="12sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTerms"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="词库 (0)"
+            android:textSize="12sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -79,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
+        android:lineSpacingExtra="6dp"
         android:text="没有达到阈值的词\n试试关掉「只要名词」或降低次数要求"
         android:alpha="0.5"
         android:visibility="gone" />
