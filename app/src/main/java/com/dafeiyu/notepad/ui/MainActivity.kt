@@ -36,6 +36,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val requestPerm = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { grants ->
+        val allGranted = grants.values.all { it }
+        if (!allGranted) {
+            Toast.makeText(this, "需要存储权限才能读写笔记", Toast.LENGTH_LONG).show()
+        }
+        refresh()
+    }
+
+    private fun ensurePermission() {
+        if (android.os.Build.VERSION.SDK_INT >= 33) {
+            // Android 13+ 不再需要 WRITE_EXTERNAL_STORAGE，公共 Documents 目录可写
+            return
+        }
+        val needed = mutableListOf<String>()
+        if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            needed += android.Manifest.permission.READ_EXTERNAL_STORAGE
+        }
+        if (android.os.Build.VERSION.SDK_INT <= 29 &&
+            checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            needed += android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }
+        if (needed.isNotEmpty()) requestPerm.launch(needed.toTypedArray())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityMainBinding.inflate(layoutInflater)
@@ -43,6 +71,8 @@ class MainActivity : AppCompatActivity() {
 
         repo = NoteRepository(this)
         meta = MetaStore(this)
+
+        ensurePermission()
 
         b.fabNew.setOnClickListener { dialogNewNote() }
         b.fabStats.setOnClickListener {
